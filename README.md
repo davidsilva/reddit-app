@@ -14,6 +14,8 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 > npm start
 ```
 
+Now, open your web browser to localhost:8080
+
 #### Not Familiar with Git?
 Click [here](https://github.com/davidsilva/reddit-app) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
 
