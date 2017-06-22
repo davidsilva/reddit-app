@@ -18,15 +18,21 @@ class CommentsList extends Component {
 			)
 		}
 	}
+
+	renderTopComments() {
+		return this.renderComments(this.props.thread.comments);
+	}
 	
-	renderComments() {
+	renderComments(comments) {
+		console.log('render comments', comments);
 		return (
-			_.map(this.props.thread.comments, comment => {
+			_.map(comments, comment => {
 				console.log('comment=');
 				console.log(comment);
+				// kind: t1 (comment)
 				return ([
 					<ol className="list-group">
-						{this.renderReplies(comment.data)}
+						{this.renderComment(comment.data)}
 					</ol>
 					
 				])
@@ -34,23 +40,25 @@ class CommentsList extends Component {
 		);
 	}
 
-	renderReplies(listing) {
-		console.log('listing=');
-		console.log(listing);
-		if (listing.replies !== null && typeof listing.replies === 'object') {
+	renderComment(comment) {
+		console.log('comment=');
+		console.log(comment);
+		if (comment.replies !== null && typeof comment.replies === 'object') {
+			// replies is a Listing, (not a thing), whose data prop has a list
+			// of things in the children prop.
 			return (
-				<li key={listing.id} className="list-group-item" style={{color: "blue"}}>
-					{listing.body}
+				<li key={comment.id} className="list-group-item" style={{color: "blue"}}>
+					{comment.body}
 					<ol className="list-group" style={{color: "green"}}>
-						{this.renderReplies(listing.replies.data.children[0].data)}
+						{this.renderComments(comment.replies.data.children)}
 					</ol>
 				</li>
 			);
 		}
 		else {
 			return (
-				<li key={listing.id} className="list-group-item" style={{color: "red"}}>
-					{listing.body}
+				<li key={comment.id} className="list-group-item" style={{color: "red"}}>
+					{comment.body}
 				</li>
 			);
 		}
@@ -60,7 +68,7 @@ class CommentsList extends Component {
 		return (
 			<div>
 			<div>{this.renderOriginalPost()}</div>
-			{this.renderComments()}
+			{this.renderTopComments()}
 			</div>
 		);
 	}
