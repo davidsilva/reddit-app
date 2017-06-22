@@ -33,10 +33,7 @@ class CommentsList extends Component {
 			comments.sort(function(a, b) {
 				var keyA = a.data.ups;
 				var keyB = b.data.ups;
-				//console.log(keyA + " vs " + keyB);
-				if (keyA < keyB) return -1;
-				if (keyB > keyA) return 1;
-				return 0;
+				return keyA - keyB;
 			});
 			console.log('comments after sort');
 			console.log(comments);
