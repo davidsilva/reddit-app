@@ -17,11 +17,11 @@ ReactDOM.render(
 		<BrowserRouter>
 			<div>
 				<Switch>
-					<Route path="/comments/:id" component={CommentsList} />
+					<Route path="/comments/:id/:sortKey?" component={CommentsList} />
 					<Route path="/" component={PostsList} />
 				</Switch>
 			</div>
 		</BrowserRouter>
 	</Provider>,
-	document.querySelector('.container')
+	document.querySelector('.app')
 )

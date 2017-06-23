@@ -25,7 +25,7 @@ class PostsList extends Component {
 
 	render() {
 		return (
-			<ol>
+			<ol className="list-group">
 				{this.renderPosts()}
 			</ol>
 		);

@@ -1,9 +1,9 @@
 {
-  "name": "redux-simple-starter",
+  "name": "reddit-app",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Retrieves posts from Reddit's reactjs discussion",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "git@github.com:davidsilva/reddit-app.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
@@ -34,7 +34,6 @@
     "react-router": "^2.0.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.0.4",
-    "redux-promise": "^0.5.3",
-    "youtube-api-search": "0.0.5"
+    "redux-promise": "^0.5.3"
   }
 }
