@@ -23,7 +23,7 @@ class CommentsList extends Component {
 			//console.log('this.props.thread.originalPost');
 			//console.log(this.props.thread.originalPost);
 			return (
-				<h1>{this.props.thread.originalPost.title}</h1>
+				<h2>{this.props.thread.originalPost.title}</h2>
 			)
 		}
 	}
@@ -93,14 +93,16 @@ class CommentsList extends Component {
 		let date = created.getDate();
 		let month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][created.getMonth()];
 		let year = created.getFullYear();
+		let hours = created.getHours();
+		let minutes = created.getMinutes();
 		if (comment.replies !== null && typeof comment.replies === 'object') {
 			// replies is a Listing, (not a thing), whose data prop has a list
 			// of things in the children prop.
 			return (
-				<li key={comment.id} className="list-group-item" style={{color: "blue"}}>
+				<li key={comment.id} className="list-group-item">
 					{comment.body}
-					<div className="pull-right">ups: {comment.ups} / downs: {comment.downs} / created: {month} {date}, {year}</div>
-					<ol className="list-group" style={{color: "green"}}>
+					<div className="meta-info">ups: {comment.ups} / downs: {comment.downs} / created: {hours}:{minutes} {month} {date}, {year}</div>
+					<ol className="list-group">
 						{this.renderComments(comment.replies.data.children)}
 					</ol>
 				</li>
@@ -108,9 +110,9 @@ class CommentsList extends Component {
 		}
 		else {
 			return (
-				<li key={comment.id} className="list-group-item" style={{color: "red"}}>
+				<li key={comment.id} className="list-group-item">
 					{comment.body}
-					<div className="pull-right">ups: {comment.ups} / downs: {comment.downs} / created: {month} {date}, {year}</div>
+					<div className="meta-info">ups: {comment.ups} / downs: {comment.downs} / created: {hours}:{minutes} {month} {date}, {year}</div>
 				</li>
 			);
 		}
@@ -139,6 +141,9 @@ class CommentsList extends Component {
 							<option value="ratio">ratio</option>
 							<option value="time">time</option>
 						</select>
+					</div>
+					<div className="col-xs-2 col-xs-offset-8">
+						<Link to="/">Home</Link>
 					</div>
 				</div>
 				<div>{this.renderOriginalPost()}</div>
