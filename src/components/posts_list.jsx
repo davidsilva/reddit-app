@@ -9,8 +9,6 @@ class PostsList extends Component {
 	}
 
 	renderPosts() {
-		console.log('this.props.posts=');
-		console.log(this.props.posts);
 		return _.map(this.props.posts, post => {
 			return (
 				<li key={post.id} className="list-group-item">
@@ -33,8 +31,6 @@ class PostsList extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log('state.posts=');
-	console.log(state.posts);
 	return { posts: state.posts };
 }
 
